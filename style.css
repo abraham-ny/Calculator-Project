@@ -167,10 +167,11 @@ button#equal {
     overflow-y: auto;
     background: white;
     border: 1px solid #ccc;
-    position: absolute;
-    top: 100%;
+    position: absolute; /* Changed from fixed to absolute */
+    top: 50px; /* Adjust this value to position it right below the button */
     left: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Ensure it appears above other elements */
 }
 
 .history div {
@@ -188,4 +189,3 @@ button#equal {
 .hidden {
     display: none;
 }
-  

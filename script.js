@@ -9,14 +9,15 @@ buttons.forEach((item) => {
       let string = display.innerText.toString();
       display.innerText = string.substr(0, string.length - 1);
     } else if (display.innerText != "" && item.id == "equal") {
-      display.innerText = eval(display.innerText);
       try {
-        let result = eval(display.value);
-        history.unshift(`${display.value} = ${result}`); // Add to history
+        let result = eval(display.innerText);
+        history.unshift(`${display.innerText} = ${result}`); // Add to history
         updateHistory();
-        display.value = result;
+        display.innerText = result;
+        setTimeout(() => (display.innerText = ""), 2000); // Auto-clear after 2 seconds
       } catch {
-        display.value = "Error";
+        display.innerText = "Error";
+        setTimeout(() => (display.innerText = ""), 2000); // Auto-clear after 2 seconds
       }
     } else if (display.innerText == "" && item.id == "equal") {
       display.innerText = "Empty!";
@@ -47,23 +48,25 @@ document.addEventListener("keydown", function (event) {
   const key = event.key;
 
   if (!isNaN(key) || key === ".") {
-    display.value += key;
+    display.innerText += key;
   } else if (["+", "-", "*", "/"].includes(key)) {
-    display.value += key;
+    display.innerText += key;
   } else if (key === "Enter") {
     event.preventDefault();
     try {
-      let result = eval(display.value);
-      history.unshift(`${display.value} = ${result}`); // Add to history
+      let result = eval(display.innerText);
+      history.unshift(`${display.innerText} = ${result}`); // Add to history
       updateHistory();
-      display.value = result;
+      display.innerText = result;
+      setTimeout(() => (display.innerText = ""), 2000); // Auto-clear after 2 seconds
     } catch {
-      display.value = "Error";
+      display.innerText = "Error";
+      setTimeout(() => (display.innerText = ""), 2000); // Auto-clear after 2 seconds
     }
   } else if (key === "Backspace") {
-    display.value = display.value.slice(0, -1);
+    display.innerText = display.innerText.slice(0, -1);
   } else if (key === "Escape") {
-    display.value = "";
+    display.innerText = "";
   }
 });
 
@@ -73,7 +76,7 @@ function updateHistory() {
     let div = document.createElement("div");
     div.textContent = entry;
     console.log(entry);
-    div.onclick = () => (display.value = entry.split(" = ")[1]);
+    div.onclick = () => (display.innerText = entry.split(" = ")[1]);
     historyList.appendChild(div);
   });
 }
