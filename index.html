@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,15 @@
     <link rel="stylesheet" href="style.css">
     <title>My Calculator</title>
 </head>
-<body>
+
+<body onload="initengine()">
     <div class="container">
         <div class="calculator dark">
             <div class="theme-toggler active">
                 <i class="toggler-icon"></i>
             </div>
+            <button id="history-btn" style="color: white; height: 30px; width: 30px; background-color: transparent;">▼</button>
+            <div id="history-list" class="history hidden"></div>
             <div class="display-screen">
                 <div id="display"></div>
             </div>
@@ -52,5 +56,11 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        function initengine() {
+            console.log("WebCalc");
+        }
+    </script>
 </body>
+
 </html>
