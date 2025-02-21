@@ -73,7 +73,7 @@ function updateHistory() {
     let div = document.createElement("div");
     div.textContent = entry;
     console.log(entry);
-    div.onclick = () => (display.value = entry.split(" = ")[1]); // Click to reuse
+    div.onclick = () => (display.value = entry.split(" = ")[1]);
     historyList.appendChild(div);
   });
 }
